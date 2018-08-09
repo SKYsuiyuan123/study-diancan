@@ -8,14 +8,12 @@ mongoose.connect('mongodb://admin:admin123@ds153851.mlab.com:53851/study')
 // 创建图表
 const todoSchema = new mongoose.Schema({
     // 数据规范
-    title: String,
-    content: String,
-    categories: Array,
-    author: String,
-    addDate: String
+    email: String,
+    password: String,
+    menu: Array
 })
 
 // 存储数据
-const Blog = mongoose.model('Blog', todoSchema)
+const Diancan = mongoose.model('Diancan', todoSchema)
 
-module.exports = Blog
+module.exports = Diancan

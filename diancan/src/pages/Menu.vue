@@ -151,9 +151,11 @@
 		},
 		created() {
 			// 请求数据  存储到 store
-			this.$axios.get('/menu.json')
+			this.$axios.get('/findMenus', {
+				headers: this.$store.state._id
+			})
 				.then(res => {
-					// console.log(res.data)
+					console.log(res.data)
 					this.$store.commit('setMenuItems', res.data)
 				})
 				.catch(error => {

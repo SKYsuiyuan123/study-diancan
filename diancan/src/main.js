@@ -6,7 +6,7 @@ import router from './router'
 import axios from 'axios'
 import {store} from './store'
 
-axios.defaults.baseURL = 'https://study-diancan.firebaseio.com/'
+axios.defaults.baseURL = 'http://47.104.11.100:8002'
 Vue.prototype.$axios = axios
 
 

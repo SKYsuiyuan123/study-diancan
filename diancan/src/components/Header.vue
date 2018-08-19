@@ -35,7 +35,9 @@
 				return this.$store.getters.currentUser
 			},
 			isLogin() {
-				return this.$store.getters.isLogin
+				console.log(this.$store.isLogin)
+				console.log(this.$store.getters.isLogin)
+				return this.$store.isLogin
 			}
 		}
 	};

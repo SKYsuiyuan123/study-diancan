@@ -30,6 +30,9 @@ export default {
 			
 			this.$router.push('/menu')
 		}
+	},
+	created() {
+		console.log(this.$store.state.users._id)
 	}
 };
 </script>

@@ -40,7 +40,7 @@
 			onSubmit () {
 				if (this.user.password === this.user.confirmPassword) {
 					console.log(this.user)
-					this.$axios.post('/users.json', this.user)
+					this.$axios.post('/register', this.user)
 						.then(res => this.$router.push('/login'))
 						.catch(error => {
 							console.log(error)

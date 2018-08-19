@@ -33,37 +33,25 @@
 		},
 		methods: {
 			onSubmit () {
-				if (this.user.email != '' && this.user.password != '') {
-					this.$axios.get('/users.json')
-					  .then(res => {
-					  	const data = res.data
-					  	const users = []
-					  	for(let key in data) {
-					  		const user = data[key]
-					  		users.push(user)
-					  	}
+				this.$axios.post('/login', {
+					'email': this.user.email,
+					'password': this.user.password
+				})
+				  .then(res => {
+				  	console.log(res.data)
+				  	this.$store.dispatch('setUser', this.user.email)
+				  	this.$store.dispatch('setUserId', res.data.user_id)
+				  	// this.$store.commit('idStatus', res.data.user_id)
+			  		this.$router.push('/home')
+				  })
+				  .catch(error => {
+			  		alert('账号或密码错误')
+			  		this.$store.dispatch('setUser', null)
+				  	this.$store.dispatch('setUserId', null)
 
-					  	// 实现过滤
-					  	let result = users.filter((user) => {
-					  		return user.email === this.user.email && user.password === this.user.password
-					  	})
-					  	console.log(result)
-					  	
-					  	if (result.length > 0 && result != null) {
-					  		this.$store.dispatch('setUser', result[0].email)
-					  		this.$router.push('/home')
-					  	} else {
-					  		alert('账号或密码错误')
-					  		this.$store.dispatch('setUser', null)
-					  	}
-
-					  })
-					  .catch(error => {
-					  	console.log(error)
-					  })
-				} else {
-					alert('账号或密码不可以为空！')
-				}
+				  	// this.$store.commit('idStatus', null)
+				  	console.log(error)
+				  })
 			}
 		},
 		// 组件内的守卫

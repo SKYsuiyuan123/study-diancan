@@ -1,5 +1,6 @@
 const state = {
-	currentUser: null	// 用户名
+	currentUser: null,	// 用户名
+	_id: null
 }
 
 const getters = {
@@ -18,6 +19,13 @@ const mutations = {
 			state.currentUser = null
 			state.isLogin = false
 		}
+	},
+	idStatus (state, userId) {
+		if (userId) {
+			state._id = userId
+		} else {
+			state._id = null
+		}
 	}
 }
 
@@ -25,6 +33,9 @@ const mutations = {
 const actions = {
 	setUser ({commit}, user) {
 		commit('userStatus', user)
+	},
+	setUserId ({commit}, userId) {
+		commit('idStatus', userId)
 	}
 }
 
